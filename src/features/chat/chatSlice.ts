@@ -5,7 +5,7 @@ import {ChatState, Message, ThemeMode} from './types';
 const initialState: ChatState = {
   conversations: mockConversations,
   favorites: [],
-  themeMode: 'system',
+  themeMode: 'light',
 };
 
 type PersistedPayload = {

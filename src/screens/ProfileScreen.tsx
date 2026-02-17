@@ -5,7 +5,7 @@ import {setThemeMode} from '../features/chat/chatSlice';
 import {ThemeMode} from '../features/chat/types';
 import {useAppColors} from '../theme/useAppColors';
 
-const modes: ThemeMode[] = ['light', 'dark', 'system'];
+const modes: ThemeMode[] = ['light', 'dark'];
 
 export function ProfileScreen(): React.JSX.Element {
   const colors = useAppColors();

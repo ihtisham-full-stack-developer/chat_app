@@ -5,8 +5,8 @@ const now = Date.now();
 export const mockConversations: Conversation[] = [
   {
     id: 'c1',
-    name: 'Maya Stone',
-    avatar: 'MS',
+    name: 'Ayesha Khan',
+    avatar: 'AK',
     isOnline: true,
     isTyping: false,
     messages: [
@@ -32,8 +32,8 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: 'c2',
-    name: 'Daniel Brooks',
-    avatar: 'DB',
+    name: 'Bilal Ahmed',
+    avatar: 'BA',
     isOnline: false,
     isTyping: false,
     messages: [
@@ -53,8 +53,8 @@ export const mockConversations: Conversation[] = [
   },
   {
     id: 'c3',
-    name: 'Design Squad',
-    avatar: 'DS',
+    name: 'Islamabad Dev Circle',
+    avatar: 'KD',
     isOnline: true,
     isTyping: false,
     messages: [

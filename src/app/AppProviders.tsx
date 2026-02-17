@@ -1,5 +1,5 @@
 import React, {PropsWithChildren, useMemo} from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
+import {StatusBar} from 'react-native';
 import {Provider, useSelector} from 'react-redux';
 import {NavigationContainer, Theme} from '@react-navigation/native';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
@@ -10,8 +10,7 @@ import {appDarkTheme, appLightTheme} from '../theme/navigationTheme';
 
 function ThemedNavigation({children}: PropsWithChildren): React.JSX.Element {
   const mode = useSelector((state: RootState) => state.chat.themeMode);
-  const systemIsDark = useColorScheme() === 'dark';
-  const isDark = mode === 'system' ? systemIsDark : mode === 'dark';
+  const isDark = mode === 'dark';
   const theme: Theme = isDark ? appDarkTheme : appLightTheme;
 
   return (
