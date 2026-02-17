@@ -1,17 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Switch, Text, View} from 'react-native';
 import {useAppDispatch, useAppSelector} from '../app/store/hooks';
 import {setThemeMode} from '../features/chat/chatSlice';
-import {ThemeMode} from '../features/chat/types';
 import {useAppColors} from '../theme/useAppColors';
-
-const modes: ThemeMode[] = ['light', 'dark'];
 
 export function ProfileScreen(): React.JSX.Element {
   const colors = useAppColors();
   const dispatch = useAppDispatch();
   const themeMode = useAppSelector(state => state.chat.themeMode);
   const favorites = useAppSelector(state => state.chat.favorites.length);
+  const isDark = themeMode === 'dark';
 
   return (
     <View style={[styles.container, {backgroundColor: colors.background}]}>
@@ -21,26 +19,23 @@ export function ProfileScreen(): React.JSX.Element {
       </Text>
 
       <Text style={[styles.subHeading, {color: colors.text}]}>Theme</Text>
-      <View style={styles.modeRow}>
-        {modes.map(mode => {
-          const active = themeMode === mode;
-          return (
-            <TouchableOpacity
-              key={mode}
-              onPress={() => dispatch(setThemeMode(mode))}
-              style={[
-                styles.modeBtn,
-                {
-                  borderColor: active ? colors.primary : colors.border,
-                  backgroundColor: active ? `${colors.primary}22` : colors.card,
-                },
-              ]}>
-              <Text style={{color: colors.text, textTransform: 'capitalize'}}>
-                {mode}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+      <View
+        style={[
+          styles.switchRow,
+          {backgroundColor: colors.card, borderColor: colors.border},
+        ]}>
+        <View>
+          <Text style={[styles.switchTitle, {color: colors.text}]}>Dark Mode</Text>
+          <Text style={[styles.switchText, {color: colors.muted}]}>
+            {isDark ? 'On' : 'Off'}
+          </Text>
+        </View>
+        <Switch
+          value={isDark}
+          onValueChange={value => dispatch(setThemeMode(value ? 'dark' : 'light'))}
+          trackColor={{false: '#9CA3AF', true: colors.primary}}
+          thumbColor="#FFFFFF"
+        />
       </View>
     </View>
   );
@@ -65,14 +60,21 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
   },
-  modeRow: {
+  switchRow: {
     flexDirection: 'row',
-    gap: 8,
-  },
-  modeBtn: {
-    paddingHorizontal: 14,
-    paddingVertical: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  switchTitle: {
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  switchText: {
+    marginTop: 2,
+    fontSize: 12,
   },
 });
