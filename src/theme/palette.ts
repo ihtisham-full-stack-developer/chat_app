@@ -1,0 +1,26 @@
+export const palette = {
+  light: {
+    background: '#F3F5F9',
+    card: '#FFFFFF',
+    text: '#111827',
+    muted: '#6B7280',
+    primary: '#0F766E',
+    border: '#E5E7EB',
+    incomingBubble: '#E5E7EB',
+    outgoingBubble: '#0F766E',
+    outgoingText: '#FFFFFF',
+    danger: '#B91C1C',
+  },
+  dark: {
+    background: '#0A0F1A',
+    card: '#141B2D',
+    text: '#F3F4F6',
+    muted: '#9CA3AF',
+    primary: '#14B8A6',
+    border: '#283247',
+    incomingBubble: '#25314A',
+    outgoingBubble: '#14B8A6',
+    outgoingText: '#001214',
+    danger: '#F87171',
+  },
+};
